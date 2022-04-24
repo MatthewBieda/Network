@@ -1,0 +1,64 @@
+h1 {
+    margin-left: 10px;
+}
+
+.NewPost {
+    margin-left: 10px;
+}
+
+.AllPosts {
+    margin-left: 10px;
+    margin-right: 75%;
+    border-width:1px;
+    border-style:solid;
+    border-color:blue;
+    border-radius: 12px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+
+}
+
+#PostBottom {
+    margin-bottom: 0px;
+}
+
+#PostLikes {
+    margin-bottom: 0px;
+}
+
+.Followers {
+    margin-left: 10px;
+}
+
+#followbutton {
+    margin-left: 10px;
+}
+
+#editbutton {
+    margin-bottom: 5px;
+}
+
+#likebutton {
+    margin-bottom: 5px;
+}
+
+#jseditbutton {
+    margin-bottom: 5px;
+}
+
+#jstextarea {
+    width: 90%;
+}
+
+.Pages {
+    margin-left: 10px;
+}
+
+textarea {
+    margin-left: 10px;
+    width: 25%;
+}
+
+#PostName {
+    margin: 0;
+}

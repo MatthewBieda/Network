@@ -1,0 +1,53 @@
+{% extends "network/layout.html" %} 
+{% block body %} 
+
+{% if user.is_authenticated%}
+
+<div class="NewPost">
+  <h3>New Post</h3>
+  <form action="" method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Post</button>
+  </form>
+</div>
+
+{% endif %}
+
+<h1>All Posts</h1>
+
+{% for post in page.object_list %}
+<div class="AllPosts">
+  <p id="{{post.id}}">{{post.content}}</p> 
+
+  <p id="PostName">Posted by: <a href="{{post.author.id}}">{{post.author}}</a></p>
+  <p id="PostBottom">Posted on: {{post.date_posted}}</p>
+
+  <p id="PostLikes">Likes: {{post.likes.all|length}}</p>
+
+  {% if post.author == user %}
+  <button class="btn btn-info" id="editbutton" onclick="edit(this)">Edit</button>
+  {% endif %}
+
+  {% if post in likedposts %}
+  <button class="btn btn-dark" id="likebutton" onclick="like(this)">Unlike</button>
+  {% else %}
+  <button class="btn btn-dark" id="likebutton" onclick="like(this)">Like</button>
+  {% endif %}
+  </div> 
+{% endfor %} 
+
+<div class="Pages">
+<h2>Page Number: {{page.number}}</h2>
+
+  {% if page.has_previous %}
+  <a href="{% url 'index' %}?page={{ page.previous_page_number }}">Previous Page</a>
+  {% endif %}
+
+  {% if page.has_next %}
+  <a href="{% url 'index' %}?page={{ page.next_page_number }}">Next Page</a>
+  {% endif %}
+</div>
+
+
+{% endblock %}
+

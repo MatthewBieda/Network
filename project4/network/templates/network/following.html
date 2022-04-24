@@ -1,0 +1,36 @@
+{% extends "network/layout.html" %} 
+{% block body %} 
+
+<h3>All Posts from users you are following: </h3>
+
+{%for post in page.object_list %}
+<div class="AllPosts">
+  <p id="{{post.id}}">{{post.content}}</p> 
+
+  <p id="PostName">Posted by: <a href="/index/{{post.author.id}}">{{post.author}}</a></p>
+  <p id="PostBottom">Posted on: {{post.date_posted}}</p>
+
+  <p id="PostLikes">Likes: {{post.likes.all|length}}</p>
+
+  {% if post in likedposts %}
+  <button class="btn btn-dark" id="likebutton" onclick="like(this)">Unlike</button>
+  {% else %}
+  <button class="btn btn-dark" id="likebutton" onclick="like(this)">Like</button>
+  {% endif %}
+  </div> 
+{% endfor %} 
+
+<div class="Pages">
+  <h2>Page Number: {{page.number}}</h2>
+  
+    {% if page.has_previous %}
+    <a href="{% url 'following' %}?page={{ page.previous_page_number }}">Previous Page</a>
+    {% endif %}
+  
+    {% if page.has_next %}
+    <a href="{% url 'following' %}?page={{ page.next_page_number }}">Next Page</a>
+    {% endif %}
+  </div>
+  
+{% endblock %}
+
